@@ -8,8 +8,9 @@ var colorcode = "";
 function builddiv(color){
     var div = document.createElement("div");
     div.style.width = "100px";
-    div.style.height = "100px";
+    div.style.height = "150px";
     div.style.background = color;
+    div.style.display = "inline-block";
 
     shadebox.appendChild(div);
 }
@@ -32,11 +33,9 @@ function magician(e){
 
     if (e.which >= 65 && e.which <= 90){
         hex = summermagic((e.which + 32) % 97);
-        console.log(hex);
     }
     else if(e.which >= 97 && e.which <= 122){
         hex = summermagic(e.which % 97);
-        console.log(hex);
     }
 
     if (mark == 1) {
@@ -49,7 +48,6 @@ function magician(e){
         blue = hex;
         colorcode = "#" + red + green + blue;
         builddiv(colorcode);
-        console.log(text, colorcode);
         text = "";
     }
 }
