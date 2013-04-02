@@ -1,9 +1,8 @@
-var mark = 0;
-var text = "";
-var red = 0;
-var green = 0;
-var blue = 0;
-var colorcode = "";
+function element(text, hex) {
+    this.text = text;
+    this.hex = hex;
+    this.colorcode = "#" + hex;
+}
 
 function builddiv(color){
     var div = document.createElement("div");
@@ -24,37 +23,34 @@ function summermagic(letterindex){
     return hex;
 }
 
-function magician(e){
-    if (!e) var e = window.event; //For IE
+function dothemagic() {
+    var input = document.getElementById("nameBox");
+    console.log(input.value);
 
-    mark = ++mark % 3;
-    text = text + String.fromCharCode(e.charCode)
+    var string = input.value;
+
+    var text = "";
     var hex = "";
+    for( var i=1; i <= string.length; i++ ){
+        charSimple = string.charAt(i-1).toLowerCase();
+        charCode = String.charCodeAt(charSimple);
 
-    if (e.which >= 65 && e.which <= 90){
-        hex = summermagic((e.which + 32) % 97);
-    }
-    else if(e.which >= 97 && e.which <= 122){
-        hex = summermagic(e.which % 97);
-    }
+        if (charCode >= 97 && charCode <= 122) {
+            text = text + string.charAt(i-1);
+            hex = hex + summermagic(charCode%97);
+        }
 
-    if (mark == 1) {
-        red = hex;
-    }
-    else if (mark == 2) {
-        green = hex;
-    }
-    else if (mark == 0){
-        blue = hex;
-        colorcode = "#" + red + green + blue;
-        builddiv(colorcode);
-        text = "";
+        if ( (i % 3) == 0 ) {
+            var elem = new element(text, hex);
+            builddiv("#"+hex);
+            hex = text = "";
+        }
     }
 }
 
 function load(){
-    var input = document.getElementById("nameBox");
-    input.addEventListener("keypress", magician, false);
+    var button = document.getElementById("colorme");
+    button.onclick = dothemagic;
 }
 
 document.addEventListener("DOMContentLoaded", load, false);
