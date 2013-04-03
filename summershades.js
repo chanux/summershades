@@ -1,13 +1,17 @@
+var elems = [];
+
 function element(text, hex) {
     this.text = text;
     this.hex = hex;
     this.colorcode = "#" + hex;
 }
 
-function builddiv(color){
+function builddiv(color, divcount){
+    var divwidth = 100 / divcount;
+    var widthentry = divwidth + "%";
     var div = document.createElement("div");
-    div.style.width = "100px";
-    div.style.height = "150px";
+    div.style.width = widthentry;
+    div.style.height = "100%";
     div.style.background = color;
     div.style.display = "inline-block";
 
@@ -43,10 +47,16 @@ function dothemagic() {
 
         if ( j == 0 ) {
             var elem = new element(text, hex);
-            builddiv("#"+hex);
+            elems.push(elem);
             hex = text = "";
         }
     }
+
+    for( var z=0; z<elems.length; z++ ) {
+        console.log(elems.length);
+        builddiv(elems[z].colorcode, elems.length);
+    }
+    elems = [];
 }
 
 function load(){
@@ -54,6 +64,14 @@ function load(){
     button.onclick = dothemagic;
 
     var input  = document.getElementById("nameBox");
+    input.addEventListener("keydown", function(event) {
+        if ( event.keyCode == 13 ) {
+            var colorbox = document.getElementById("shadebox");
+            colorbox.innerHTML = '';
+            button.click();
+        }
+    });
+
     input.addEventListener("focus", function(event){
         var txtbox = document.getElementById("nameBox");
         txtbox.focus();
