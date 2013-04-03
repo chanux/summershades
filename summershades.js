@@ -25,7 +25,6 @@ function summermagic(letterindex){
 
 function dothemagic() {
     var input = document.getElementById("nameBox");
-    console.log(input.value);
 
     var string = input.value;
 
@@ -35,7 +34,6 @@ function dothemagic() {
     for( var i=0; i < string.length; i++ ) {
         charSimple = string.charAt(i).toLowerCase();
         charCode = String.charCodeAt(charSimple);
-        console.log(charCode);
 
         if (charCode >= 97 && charCode <= 122) {
             text = text + string.charAt(i-1);
@@ -54,6 +52,15 @@ function dothemagic() {
 function load(){
     var button = document.getElementById("colorme");
     button.onclick = dothemagic;
+
+    var input  = document.getElementById("nameBox");
+    input.addEventListener("focus", function(event){
+        var txtbox = document.getElementById("nameBox");
+        txtbox.focus();
+        txtbox.value ="";
+        var colorbox = document.getElementById("shadebox");
+        colorbox.innerHTML = '';
+    });
 }
 
 document.addEventListener("DOMContentLoaded", load, false);
