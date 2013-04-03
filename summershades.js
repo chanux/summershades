@@ -65,14 +65,15 @@ function load(){
 
     var input  = document.getElementById("nameBox");
     input.addEventListener("keydown", function(event) {
-        if ( event.keyCode == 13 ) {
+        e = event || window.event;
+        if ( e.keyCode == 13 ) {
             var colorbox = document.getElementById("shadebox");
             colorbox.innerHTML = '';
             button.click();
         }
     });
 
-    input.addEventListener("focus", function(event){
+    input.addEventListener("focus", function(){
         var txtbox = document.getElementById("nameBox");
         txtbox.focus();
         txtbox.value ="";
