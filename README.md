@@ -1,5 +1,7 @@
 Summershades
 ============
+*bsumm.net color bands for everyone.*
+
 
 ***It's not there yet!***
 
@@ -11,7 +13,7 @@ Then I went on an figured it out. I showed it to my colleagues and one wanted th
 
 Demo
 ----
-Gimme my [stripes](http://chanux.github.com/summershades)!
+Gimme my color [bands](http://chanux.github.com/summershades)!
 
 License
 -------
