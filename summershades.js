@@ -31,16 +31,19 @@ function dothemagic() {
 
     var text = "";
     var hex = "";
-    for( var i=1; i <= string.length; i++ ){
-        charSimple = string.charAt(i-1).toLowerCase();
+    var j = 0;
+    for( var i=0; i < string.length; i++ ) {
+        charSimple = string.charAt(i).toLowerCase();
         charCode = String.charCodeAt(charSimple);
+        console.log(charCode);
 
         if (charCode >= 97 && charCode <= 122) {
             text = text + string.charAt(i-1);
             hex = hex + summermagic(charCode%97);
+            j = ++j % 3;
         }
 
-        if ( (i % 3) == 0 ) {
+        if ( j == 0 ) {
             var elem = new element(text, hex);
             builddiv("#"+hex);
             hex = text = "";
