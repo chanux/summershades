@@ -36,8 +36,10 @@ function dothemagic() {
     var hex = "";
     var j = 0;
     for( var i=0; i < string.length; i++ ) {
-        charSimple = string.charAt(i).toLowerCase();
-        charCode = String.charCodeAt(charSimple);
+        charCode = string.charCodeAt(i);
+        if (charCode >= 65 && charCode <= 90) {
+            charCode = charCode + 32;
+        }
 
         if (charCode >= 97 && charCode <= 122) {
             text = text + string.charAt(i-1);
