@@ -8,11 +8,20 @@ On one boring morning I found myself on bsumm.net and realized I still didn't kn
 
 Then I went on an figured it out. I showed it to my colleagues and one wanted the color bands for her name too. Then I decided to make this.
 
-If you don't want to look at the code, following is how the colors are made.
+How?
+---
 
-Every three charachters is used to make Red, Green and Blue hex values. Color values vary from 0-255.
-Number English alphabet starting from zero. Then apply following algorithm.
-color value = letter index x 10 + floor(lette index / 5)
+*If you don't want to look at the code, following is how the colors are made.*
+
+Each triplet of charachters represent Red, Green and Blue intensities hexadecimal.
+
+Color intensity values vary from 0-255.
+
+Number English alphabet starting from zero (0-25).
+
+Then apply following algorithm.
+
+color intensity value = letter index x 10 + floor(letter index / 5)
 
 Demo
 ----
